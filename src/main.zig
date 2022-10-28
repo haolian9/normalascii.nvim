@@ -5,7 +5,6 @@ const log = std.log;
 
 const c = @cImport(@cInclude("dbus/dbus.h"));
 
-// var state: c.DBusConnection = undefined;
 var state: struct {
     inited: bool = false,
     conn: *c.DBusConnection = undefined,
@@ -21,8 +20,6 @@ var state: struct {
         c.dbus_connection_unref(self.conn);
     }
 } = .{};
-
-const MsgUnknown = opaque {};
 
 fn isInAsciiMode(conn: *c.DBusConnection) bool {
     const msg = c.dbus_message_new_method_call("org.fcitx.Fcitx5", "/rime", "org.fcitx.Fcitx.Rime1", "IsAsciiMode");

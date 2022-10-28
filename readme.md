@@ -21,3 +21,6 @@ it may crash nvim
 ## usage
 * manually: `require'normalascii'.goto_ascii()`
 * automatically: `require'normalascii'.auto_ascii()`
+
+## known limitations
+* i_ctrl-c has not be covered
