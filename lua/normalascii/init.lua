@@ -14,8 +14,8 @@ local log = (function()
 
   return {
     debug = maker(vim.log.levels.DEBUG),
-    info = maker(vim.log.levels.info),
-    err = maker(vim.log.levels.err),
+    info = maker(vim.log.levels.INFO),
+    err = maker(vim.log.levels.ERROR),
   }
 end)()
 
