@@ -4,9 +4,11 @@ pub fn build(b: *std.build.Builder) void {
     // Standard release options allow the person running `zig build` to select
     // between Debug, ReleaseSafe, ReleaseFast, and ReleaseSmall.
     const mode = b.standardReleaseOptions();
+    const strip = mode != .Debug;
 
     const lib = b.addSharedLibrary("normalascii", "src/main.zig", .unversioned);
     lib.setBuildMode(mode);
+    lib.strip = strip;
     lib.linkLibC();
     lib.linkSystemLibrary("dbus-1");
     lib.install();
@@ -14,7 +16,8 @@ pub fn build(b: *std.build.Builder) void {
     const test_step = b.step("test", "Run library tests");
     test_step.dependOn(blk: {
         const tests = b.addTest("src/main.zig");
-        tests.setBuildMode(mode);
+        tests.linkLibC();
+        tests.linkSystemLibrary("dbus-1");
         break :blk &tests.step;
     });
 
