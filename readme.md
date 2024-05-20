@@ -8,11 +8,11 @@ it may crash nvim
 
 ## prerequisites
 * linux
-* dbus 1.14.4
+* dbus 1.14.10
 * fcitx5
 * rime
-* nvim 0.8.0
-* zig 0.10.0 (for compilation)
+* nvim 0.10.0
+* zig 0.12.0 (for compilation)
 
 ## setup
 * add it to your nvim plugin manager
